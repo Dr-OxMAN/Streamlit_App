@@ -110,28 +110,45 @@ if uploaded_file:
     else:
         st.write("The CSV does not have a 'Year' column to visualize trends.")
 
+import streamlit as st
+import numpy as np
+import plotly.express as px
+import pandas as pd
+
+# Set Streamlit page layout
+st.set_page_config(page_title="Citations Growth", layout="wide")
+
+# Title
+st.title("Exponential Growth of Citations (2015 - 2024)")
+
 # Years from 2015 to 2024
 years = np.arange(2015, 2025)
 
 # Generate exponential growth data for citations
 citations = np.round(10 * np.exp(0.5 * (years - 2015))).astype(int)
 
-# Create a DataFrame for Plotly
+# Create a DataFrame
 df = pd.DataFrame({"Year": years, "Citations": citations})
 
-# Create bar chart
-fig = px.bar(df, x="Year", y="Citations", text="Citations", 
-             title="Exponential Growth of Citations (2015 - 2024)",
-             labels={"Year": "Year", "Citations": "Number of Citations"},
-             color="Citations", color_continuous_scale="Blues")
+# Create Plotly bar chart
+fig = px.bar(
+    df,
+    x="Year",
+    y="Citations",
+    text="Citations",
+    title="Exponential Growth of Citations",
+    labels={"Year": "Year", "Citations": "Number of Citations"},
+    color="Citations",
+    color_continuous_scale="Blues"
+)
 
 # Customize layout
-fig.update_traces(textposition="outside")  # Show numbers above bars
+fig.update_traces(textposition="outside")  # Show citation values above bars
 fig.update_layout(
-    xaxis=dict(tickmode="linear"),  # Ensure all years are displayed
-    yaxis=dict(showgrid=True, gridcolor="lightgray"),  # Add a subtle grid
+    xaxis=dict(tickmode="linear"),
+    yaxis=dict(showgrid=True, gridcolor="lightgray"),
     plot_bgcolor="white"
 )
 
-# Show plot
-fig.show()
+# Display Plotly chart in Streamlit
+st.plotly_chart(fig, use_container_width=True)
