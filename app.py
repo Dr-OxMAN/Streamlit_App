@@ -4,11 +4,11 @@ Created on Wed Jan 29 10:23:15 2025
 
 @author: Dr OxMAN
 """
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import streamlit as st
 import pandas as pd
 import numpy as np
-#import plotly.express as px
+import plotly.express as px
 # """Introduction to Streamlit"""
 # st.title("Streamlit is Amazing")
 
@@ -114,23 +114,24 @@ if uploaded_file:
 years = np.arange(2015, 2025)
 
 # Generate exponential growth data for citations
-citations = np.round(10 * np.exp(0.5 * (years - 2015))).astype(int)  # Adjust growth rate as needed
+citations = np.round(10 * np.exp(0.5 * (years - 2015))).astype(int)
+
+# Create a DataFrame for Plotly
+df = pd.DataFrame({"Year": years, "Citations": citations})
 
 # Create bar chart
-plt.figure(figsize=(10, 6))
-plt.bar(years, citations, color="royalblue", alpha=0.8)
+fig = px.bar(df, x="Year", y="Citations", text="Citations", 
+             title="Exponential Growth of Citations (2015 - 2024)",
+             labels={"Year": "Year", "Citations": "Number of Citations"},
+             color="Citations", color_continuous_scale="Blues")
 
-# Labels and title
-plt.xlabel("Year", fontsize=12)
-plt.ylabel("Number of Citations", fontsize=12)
-plt.title("Exponential Growth of Citations (2015 - 2024)", fontsize=14)
-
-# Show values on top of bars
-for i, v in enumerate(citations):
-    plt.text(years[i], v + 10, str(v), ha="center", fontsize=10, color="black")
-
-plt.xticks(years)  # Ensure all years are displayed
-plt.grid(axis="y", linestyle="--", alpha=0.7)  # Add a grid for better readability
+# Customize layout
+fig.update_traces(textposition="outside")  # Show numbers above bars
+fig.update_layout(
+    xaxis=dict(tickmode="linear"),  # Ensure all years are displayed
+    yaxis=dict(showgrid=True, gridcolor="lightgray"),  # Add a subtle grid
+    plot_bgcolor="white"
+)
 
 # Show plot
-plt.show()
+fig.show()
