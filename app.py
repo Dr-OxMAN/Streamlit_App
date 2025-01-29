@@ -45,7 +45,7 @@ import numpy as np
 
 #if uploaded_file is not None:
     #st.sidebar.image(uploaded_file, width=256, caption="Dr OxMAN")
-st.sidebar.image("https://github.com/Dr-OxMAN/Streamlit_App/blob/main/OXMAN.jpg",
+st.sidebar.image("OXMAN.jpg",
                  width=256, caption="Dr OxMAN")
 
 name = "Dr. OxMAN"
