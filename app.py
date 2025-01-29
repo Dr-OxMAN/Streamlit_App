@@ -63,18 +63,15 @@ st.sidebar.text(f"Mobile number : {number}")
 
 st.sidebar.subheader("Area of Interest")
 st.sidebar.write(f"**Name:** {name}")
-st.sidebar.write(f"**Field of Research:** {field}")
+st.sidebar.write(f"**Expertise:** {field}")
 st.sidebar.write(f"**Institution:** {institution}")
 
 # Title of the app
 st.title("Researcher Profile Page")
 
 # Display basic profile information
-st.header("Researcher Overview")
+st.header("Dr Oxman's Research Areas")
 st.write(f"Ultra High Resolution Electron Microscopy. Image Simulation and Processing. The investigation of new approaches to quantitative microscopy (theory and experiment). Structural Studies of inorganic oxides and surfaces. The development of new detectors for imaging with high energy electrons. Aberration Corrected Electron Optics. Imaging radiation sensitive materials. Nanocrystalline metal and metal oxide catalysts. Diffractive imaging without lenses.")
-st.write(f"**Name:** {name}")
-st.write(f"**Field of Research:** {field}")
-st.write(f"**Institution:** {institution}")
 
 # Add a section for publications
 st.header("Publications")
