@@ -116,7 +116,7 @@ import plotly.express as px
 import pandas as pd
 
 # Set Streamlit page layout
-st.set_page_config(page_title="Citations Growth", layout="wide")
+#st.set_page_config(page_title="Citations Growth", layout="wide")
 
 # Title
 st.title("Exponential Growth of Citations (2015 - 2024)")
