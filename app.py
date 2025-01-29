@@ -4,6 +4,7 @@ Created on Wed Jan 29 10:23:15 2025
 
 @author: Dr OxMAN
 """
+import matplotlib.pyplot as plt
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -108,3 +109,28 @@ if uploaded_file:
         st.bar_chart(year_counts)
     else:
         st.write("The CSV does not have a 'Year' column to visualize trends.")
+
+# Years from 2015 to 2024
+years = np.arange(2015, 2025)
+
+# Generate exponential growth data for citations
+citations = np.round(10 * np.exp(0.5 * (years - 2015))).astype(int)  # Adjust growth rate as needed
+
+# Create bar chart
+plt.figure(figsize=(10, 6))
+plt.bar(years, citations, color="royalblue", alpha=0.8)
+
+# Labels and title
+plt.xlabel("Year", fontsize=12)
+plt.ylabel("Number of Citations", fontsize=12)
+plt.title("Exponential Growth of Citations (2015 - 2024)", fontsize=14)
+
+# Show values on top of bars
+for i, v in enumerate(citations):
+    plt.text(years[i], v + 10, str(v), ha="center", fontsize=10, color="black")
+
+plt.xticks(years)  # Ensure all years are displayed
+plt.grid(axis="y", linestyle="--", alpha=0.7)  # Add a grid for better readability
+
+# Show plot
+plt.show()
