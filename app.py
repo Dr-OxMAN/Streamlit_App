@@ -41,7 +41,7 @@ import numpy as np
 # """Building a Researcher Profile Page"""
 
 
-st.sidebar.image(r"C:\Users\Dr OxMAN\Downloads\Firefly a realistic picture of an Ox wearing a suit 38060.jpg",
+st.sidebar.image(r"C:\Users\Dr OxMAN\Downloads\OXMAN.jpg",
                  width=256, caption="Dr OxMAN")
 name = "Dr. OxMAN"
 field = "Materials Science"
