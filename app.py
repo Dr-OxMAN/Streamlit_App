@@ -41,8 +41,11 @@ import numpy as np
 # """Building a Researcher Profile Page"""
 
 
-st.sidebar.image(r"C:\Users\Dr OxMAN\Downloads\OXMAN",
-                 width=256, caption="Dr OxMAN")
+uploaded_file = st.sidebar.file_uploader("Upload an image", type=["jpg", "png"])
+
+if uploaded_file is not None:
+    st.sidebar.image(uploaded_file, width=256, caption="Dr OxMAN")
+
 name = "Dr. OxMAN"
 field = "Materials Science"
 institution = "University of the Witwatersrand"
